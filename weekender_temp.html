@@ -1,0 +1,114 @@
+<html>
+<head>
+    <link href="weekender_temp.css" rel="stylesheet" type="text/css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="http://media.northbynorthwestern.com.s3.amazonaws.com/uploads/2013/04/18/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Arimo|Kreon" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500" rel="stylesheet">
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+
+
+
+</head>
+<body>
+    <div class="main">
+            <h2>the weekender<a id="period">. </a></h2>
+    </div>
+    <div class="container">
+        <div class="aside">
+            <h1 id="do" class="inactive">DO</h1>
+            <h1 id="see" class="inactive">SEE</h1>            
+            <h1 id="hear" class="inactive">HEAR</h1>
+            <h1 id="buy" class="inactive">BUY</h1>
+            <h1 id="eat" class="inactive">EAT</h1>
+            <h1 id="carpe" class="inactive">CARPE DIEM</h1>
+
+        </div>
+        <div class="modal" >
+            <div>
+                <img id="mod"/>
+            </div>
+            
+            <div class="description">
+                <a id="link" href=""><p id="event-title"></p></a>
+                <p id="main"></p>
+            </div>
+        </div>
+    </div>
+    <div class="credit" align="right">
+        <p id="cred">Production by Audrey DeBruine</p>
+    </div>
+    
+    <script type="text/javascript">
+        var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1pnLq-Wfwdf3Fx91d9rQsVsonMCLC7ntMiVXshLAqVZ0/edit?usp=sharing';
+
+        function init() {
+            Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+        }
+        
+        window.addEventListener('DOMContentLoaded', init)
+
+        function showInfo(data, tabletop) {
+            console.log(data);
+
+            $("h1").click(function(){
+                $("h1").removeClass("active");
+                $(this).addClass("active");
+
+            });
+
+            $("#do").click(function(){
+              $(".description p:first").html(data[0].event);
+              $(".description p:last").html(data[0].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[0].image);
+              $("#link").attr("href", data[0].link);
+
+            });
+
+            $("#see").click(function(){
+              $(".description p:first").html(data[1].event);
+              $(".description p:last").html(data[1].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[1].image);
+              $("#link").attr("href", data[1].link);
+
+            });
+
+            $("#hear").click(function(){
+              $(".description p:first").html(data[2].event);
+              $(".description p:last").html(data[2].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[2].image);
+              $("#link").attr("href", data[2].link);
+      
+            });
+
+            $("#buy").click(function(){
+              $(".description p:first").html(data[3].event);
+              $(".description p:last").html(data[3].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[3].image);
+              $("#link").attr("href", data[3].link);
+
+            });
+
+            $("#eat").click(function(){
+              $(".description p:first").html(data[4].event);
+              $("#link").attr("href", data[4].link);
+              $(".description p:last").html(data[4].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[4].image);
+
+            });
+
+            $("#carpe").click(function(){
+              $(".description p:first").html(data[5].event);
+              $(".description p:last").html(data[5].description);
+              $("#mod").attr("src", "http://media.northbynorthwestern.com.s3.amazonaws.com/" + data[5].image);  
+              $("#link").attr("href", data[5].link);
+              
+            });
+      } 
+
+</script>
+
+</body>
